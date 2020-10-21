@@ -32,51 +32,48 @@ function OrphanagesMap() {
 				<header>
 					<img src={mapMarkerImg} alt="Happy" />
 
-					<h2>Escolha um orfanato no mapa</h2>
-					<p>Muitas crianças estão esperando a sua visita :)</p>
+					<h2>Choose an orphanage on the map</h2>
+					<p>Many children are waiting for your visit :)</p>
 				</header>
 
 				<footer>
-					<strong>Braga</strong>
-					<span>São Victor</span>
+					<strong>Portugal</strong>
+					<span></span>
 				</footer>
 			</aside>
-				{
-					orphanages.length > 0 && 
-					<Map
-						center={[orphanages[0].latitude , orphanages[0].longitude]}
-						zoom={15}
-						style={{ width: '100%', height: '100%' }}
-					>
-						
-						<TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-						{
-							orphanages.map(orphanage => {
-								return (
-									<Marker
-										icon={MapIcon}
-										position={[orphanage.latitude, orphanage.longitude]}
-										key={orphanage.id}
-									>
-										<Popup
-											closeButton={false}
-											minWidth={240}
-											maxWidth={240}
-											className="map-popup"
-										>
-											{ orphanage.name }
+			<Map
+				center={[38.7075871, -9.1386542]}
+				zoom={15}
+				style={{ width: '100%', height: '100%' }}
+			>
 
-											<Link to={`/orphanages/${orphanage.id}`}>
-												
-												<FiArrowRight size={20} color="#fff" />
-											</Link>
-										</Popup>
-									</Marker>
-								)
-							})
-						}
-					</Map> 
+				<TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+				{
+					orphanages.map(orphanage => {
+						return (
+							<Marker
+								icon={MapIcon}
+								position={[orphanage.latitude, orphanage.longitude]}
+								key={orphanage.id}
+							>
+								<Popup
+									closeButton={false}
+									minWidth={240}
+									maxWidth={240}
+									className="map-popup"
+								>
+									{orphanage.name}
+
+									<Link to={`/orphanages/${orphanage.id}`}>
+
+										<FiArrowRight size={20} color="#fff" />
+									</Link>
+								</Popup>
+							</Marker>
+						)
+					})
 				}
+			</Map>
 
 			<Link to="/orphanages/create" className="create-orphanage">
 				<FiPlus size="32" color="#fff" />

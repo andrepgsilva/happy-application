@@ -1,1 +1,6 @@
 .directory
+web/node_modules
+backend/node_modules
+mobile/node_modules
+backend/src/database/database.sqlite
+uploads

@@ -38,7 +38,7 @@ export default function Orphanage() {
   }, [params.id]);
 
   if (! orphanage) {
-    return <p>Carregando...</p>;
+    return <p>Loading...</p>;
   }
 
   return (
@@ -95,41 +95,41 @@ export default function Orphanage() {
 
                 <footer>
                   <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/dir/?api=1&destination=${orphanage.latitude},${orphanage.longitude}`}>
-                    Ver rotas no Google Maps
+                    See routes on Google Maps
                   </a>
                 </footer>
               </div>
 
               <hr />
 
-              <h2>Instruções para visita</h2>
+              <h2>Instructions for visit</h2>
               <p>{ orphanage.instructions }</p>
 
               <div className="open-details">
                 <div className="hour">
                   <FiClock size={32} color="#15B6D6" />
-                  Segunda à Sexta <br />
+                  Monday to Friday <br />
                   { orphanage.opening_hours }
                 </div>
                 {
                   orphanage.open_on_weekends ? (
                     <div className="open-on-weekends">
                       <FiInfo size={32} color="#39CC83" />
-                      Atendemos <br />
-                      fim de semana
+                      We attend at <br />
+                      the weekend
                     </div>
                   ) : (
                     <div className="open-on-weekends dont-open">
                       <FiInfo size={32} color="#FF669D" />
-                      Não atendemos <br />
-                      fim de semana
+                      We do not attend at<br />
+                      the weekend
                     </div>
                   )
                 }
               </div>
               <button type="button" className="contact-button">
                 <FaWhatsapp size={20} color="#FFF" />
-                Entrar em contato
+                Get in touch
               </button>
             </div>
           </div>

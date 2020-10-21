@@ -77,16 +77,16 @@ export default function CreateOrphanage() {
       <main>
         <form className="create-orphanage-form" onSubmit={handleSubmit}>
           <fieldset>
-            <legend>Dados</legend>
+            <legend>Data</legend>
 
             <Map 
-              center={[-27.2092052,-49.6401092]} 
+              center={[38.7075871,-9.1386542]} 
               style={{ width: '100%', height: 280 }}
               zoom={15}
-              onClick="handleMapClick"
+              onClick={handleMapClick}
             >
               <TileLayer 
-                url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
+                url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
 
               { 
@@ -96,17 +96,17 @@ export default function CreateOrphanage() {
             </Map>
 
             <div className="input-block">
-              <label htmlFor="name">Nome</label>
+              <label htmlFor="name">Name</label>
               <input id="name" value={name} onChange={event => setName(event.target.value)} />
             </div>
 
             <div className="input-block">
-              <label htmlFor="about">Sobre <span>Máximo de 300 caracteres</span></label>
+              <label htmlFor="about">About <span>Max 300 characters</span></label>
               <textarea id="name" maxLength={300} value={about} onChange={event => setAbout(event.target.value)} />
             </div>
 
             <div className="input-block">
-              <label htmlFor="images">Fotos</label>
+              <label htmlFor="images">Images</label>
 
               <div className="images-container">
                 { 
@@ -122,25 +122,25 @@ export default function CreateOrphanage() {
                 </label>
               </div>
 
-              <input multiple onChange={() => handleSelectImages} type="file" id="image[]"/>
+              <input multiple onChange={handleSelectImages} type="file" id="image[]"/>
             </div>
           </fieldset>
 
           <fieldset>
-            <legend>Visitação</legend>
+            <legend>Visitation</legend>
 
             <div className="input-block">
-              <label htmlFor="instructions">Instruções</label>
+              <label htmlFor="instructions">Instructions</label>
               <textarea id="instructions" value={instructions} onChange={event => setInstructions(event.target.value)}/>
             </div>
 
             <div className="input-block">
-              <label htmlFor="opening_hours">Horário de funcionamento</label>
+              <label htmlFor="opening_hours">Working hours</label>
               <input id="opening_hours" value={opening_hours} onChange={event => setOpeningHours(event.target.value)}/>
             </div>
 
             <div className="input-block">
-              <label htmlFor="open_on_weekends">Atende fim de semana</label>
+              <label htmlFor="open_on_weekends">Open on weekends</label>
 
               <div className="button-select">
                 <button 
@@ -148,26 +148,24 @@ export default function CreateOrphanage() {
                   className={open_on_weekends ? 'active' : ''}
                   onClick={() => setOpenOnWeekends(true)}
                 >
-                  Sim
+                  Yes
                 </button>
                 <button 
                   type="button"
                   className={! open_on_weekends ? 'active': ''}
                   onClick={() => setOpenOnWeekends(false)}
                 >
-                  Não
+                  No
                 </button>
               </div>
             </div>
           </fieldset>
 
           <button className="confirm-button" type="submit">
-            Confirmar
+            Confirm
           </button>
         </form>
       </main>
     </div>
   );
 }
-
-// return `https://a.tile.openstreetmap.org/${z}/${x}/${y}.png`;
