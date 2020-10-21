@@ -20,7 +20,6 @@ function Landing() {
 
 				<div className="location">
 					<strong>Portugal</strong>
-					<span>Braga</span>
 				</div>
 
 				<Link to="/app" className="enter-app">
